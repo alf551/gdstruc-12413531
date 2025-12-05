@@ -1,25 +1,35 @@
-public class Main {
-    public static void main(String[] args) {
-        DoublyLinkedList myList = new DoublyLinkedList();
+import java.util.ArrayList;
+import java.util.List;
 
-        myList.addNode("Heathcliff");
-        myList.addNode("Asuna");
-        myList.addNode("LethalBacon");
-        myList.addNode("HPDeskjet");
+public class Main
+{
 
-        myList.printList();
+    public static void main(String[] args)
+    {
+        Player heathcliff = new Player(0, "Heathcliff", 999);
+        Player asuna = new Player(1, "Asuna", 100);
+        Player lethalBacon = new Player(2, "LethalBacon", 205);
+        Player hpdeskjet = new Player(3, "HPDeskjet", 34);
 
-        System.out.println("\nRemoving first element...");
-        myList.removeFirstElement();
-        myList.printList();
+        PlayerLinkList playerLinkedList = new PlayerLinkList();
 
-        String searchOne = "Asuna";
-        System.out.println("\nContains " + searchOne + "? " + myList.contains(searchOne));
+        playerLinkedList.addToFront(asuna);
+        playerLinkedList.addToFront(lethalBacon);
+        playerLinkedList.addToFront(hpdeskjet);
 
-        String searchTwo = "LethalBacon";
-        System.out.println("Index of " + searchTwo + ": " + myList.indexOf(searchTwo));
+        playerLinkedList.addToFront(heathcliff);
 
-        String searchThree = "Heathcliff";
-        System.out.println("Index of " + searchThree + ": " + myList.indexOf(searchThree));
+        System.out.println("--- Initial List ---");
+        playerLinkedList.printList();
+
+        System.out.println("\n--- Testing removal ---");
+        PlayerNode removed = playerLinkedList.removeFirst();
+        System.out.println("Removed: " + removed.getPlayer().getName());
+        playerLinkedList.printList();
+
+        System.out.println("\n--- Testing search functions ---");
+        System.out.println("List contains 'Asuna': " + playerLinkedList.contains(asuna));
+        System.out.println("'LethalBacon' is at index: " + playerLinkedList.indexOf(lethalBacon));
+
     }
 }
